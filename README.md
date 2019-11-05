@@ -20,3 +20,7 @@
 1. GRASP: solução inicial gulosa aleatorizada + busca local  (Isadora)
 1. Tabu Search
 1. VND
+
+
+## Instâncias
+Foram utilizadas as instâncias do [Dimacs](http://iridia.ulb.ac.be/~fmascia/maximum_clique/DIMACS-benchmark#detC250.9), que são instâncias para o problema do clique máximo. Como clique máximo é complementar ao conjunto independente máximo, criamos o grafo complementar dessas instâncias e computamos o conjunto independente máximo.
