@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 #include <vector>
 #include <fstream>
+#include <cstdio>
+#include <ctime>
+#include <time.h>
 
 using namespace std;
 
@@ -30,7 +33,6 @@ int main(int argc, char *argv[]){
 				M.push_back(N);
 			}
 		for(int k = 0; k < edges; k++){
-			cout << k << "\n";
 				file >> str;
 				file >> v1;
 				file >> v2;
@@ -39,6 +41,17 @@ int main(int argc, char *argv[]){
 		}
 	}
 
+
+	std::clock_t start;
+    double duration;
+
+    start = std::clock();
+
 	greedy_heuristic(M);
+
+
+	duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+
+    std::cout << "TEMPO: "<< duration <<'\n';
 
 }
