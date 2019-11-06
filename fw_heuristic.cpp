@@ -4,17 +4,18 @@ using namespace std;
 
 int **G; //grafo global foda-se
 int **dist; //graph to store the result of the floyd warshall algorithm
-#define INF 99999999;
+#define INF 99999999
+
 void init_matrix(int nnodes){
   for (int i = 0; i < nnodes; i++) {
     for (int j = 0; j < nnodes; j++) {
       if (i==j) {
-        G[i][j] = 0;
+        dist[i][j] = 0;
       }
       else{
-        G[i][j] = INF;
+        dist[i][j] = INF;
       }
-      dist[i][j] = G[i][j];
+       G[i][j] = 0;
     }
   }
 }
@@ -41,7 +42,7 @@ void free_matrix(int nnodes){
 void print_matrix(int nnodes){
   for (int i = 0; i < nnodes; i++) {
     for (int j = 0; j < nnodes; j++) {
-      cout << dist[i][j] << " ";
+      cout << G[i][j] << " ";
     }
     cout << endl;
   }
@@ -51,15 +52,10 @@ void floyd_warshall(int nodes){
     for (int j = 0; j < nodes; j++) {
       for (int k = 0; k < nodes; k++) {
         dist[i][j] = min(dist[i][j],dist[i][k]+dist[k][j]);
-        print_matrix(nodes);
-        cout << endl;
       }
     }
   }
 }
-
-
-
 
 /* after we run floyd_warshall, do as follows:
 1. Select a starting node
@@ -69,20 +65,51 @@ void floyd_warshall(int nodes){
 3. repeat starting from the last node added to solution
 The heuristic returns the size of the independent set found
 */
-
-int heuristic(int nodes, int starting_node){
-  // starting_node will be indexed starting from 0
-  vector<int> independent_set;
-  for (int i = 0; i < nodes; i++) {
-    for (int j = 0; j < nodes; j++) {
-
+bool is_independent_set(vector<int> independent_set, int candidate_node){
+  // cout << "tamanho do IS "<<independent_set.size() << endl;
+  bool flag_ind_set = true;
+  for (int i = 0; i < independent_set.size(); i++) {
+    if (G[independent_set[i]][candidate_node]>0) {
+      flag_ind_set = false;
     }
   }
+  return flag_ind_set;
+}
+
+
+int heuristic(int nodes, int starting_node){
+  vector<int> independent_set;
+
+  pair<int,int> top;
+  bool is_ind_set;
+  int i,j;
+
+  independent_set.push_back(starting_node);
+  for (i = starting_node; i < nodes; i++) {
+    priority_queue<pair<int,int>> neighbors;
+
+    for (j = i+1; j < nodes; j++) {//only de top diagonal
+      if (G[i][j]) {
+        neighbors.push(make_pair(dist[i][j],j));
+      }
+    }
+    while (!neighbors.empty()) {
+      top = neighbors.top();
+      neighbors.pop();
+      is_ind_set = is_independent_set(independent_set,top.second);
+      if (is_ind_set) {
+        independent_set.push_back(top.second);
+        break;
+      }
+    }
+  }
+  set<int> answer(independent_set.begin(),independent_set.end());
+  return answer.size();
 }
 
 int main(int argc, char const *argv[]) {
   char  e;
-  int src,dst,nodes,edges;
+  int src,dst,nodes,edges,cost;
   string line;
 
   ifstream infile(argv[1]);
@@ -101,9 +128,9 @@ int main(int argc, char const *argv[]) {
     dist[dst-1][src-1] = 1;
 
   }
-
   floyd_warshall(nodes);
-
+  cost = heuristic(nodes,0);
   free_matrix(nodes);
+  cout << cost << endl;
   return 0;
 }
