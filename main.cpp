@@ -8,30 +8,31 @@
 using namespace std;
 
 void greedy_heuristic(vector <vector <int > > G);
+void aproximative_independent_set(vector <vector <int> > G);
 
 int main(int argc, char *argv[]){
 	
 	ifstream file;
 	file.open(argv[1]);
-	int v1, v2;
 	string str;
 	int nodes, edges;
+	int v1, v2;
 	vector <vector <int> > M;
 	
 	//sera formado o grafo complementar de cada instancia
 	if (file.is_open()){
 		file >> nodes;
-			file >> edges;
-			for (int j = 0; j < nodes; j++){
-				vector<int> N;
-				for (int i = 0; i < nodes; i++){
-					if (i != j)
-						N.push_back(1);
-					else 
-						N.push_back(0);
-				}
-				M.push_back(N);
+		file >> edges;
+		for (int j = 0; j < nodes; j++){
+			vector<int> N;
+			for (int i = 0; i < nodes; i++){
+				if (i != j)
+					N.push_back(1);
+				else 
+					N.push_back(0);
 			}
+			M.push_back(N);
+		}
 		for(int k = 0; k < edges; k++){
 				file >> str;
 				file >> v1;
@@ -47,7 +48,8 @@ int main(int argc, char *argv[]){
 
     start = std::clock();
 
-	greedy_heuristic(M);
+	//greedy_heuristic(M);
+	aproximative_independent_set(M);
 
 
 	duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
