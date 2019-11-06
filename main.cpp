@@ -7,8 +7,9 @@
 
 using namespace std;
 
-void greedy_heuristic(vector <vector <int > > G);
-void aproximative_independent_set(vector <vector <int> > G);
+void grasp(vector <vector <int> > G);
+//void greedy_heuristic(vector <vector <int > > G);
+//void aproximative_independent_set(vector <vector <int> > G);
 
 int main(int argc, char *argv[]){
 	
@@ -48,8 +49,10 @@ int main(int argc, char *argv[]){
 
     start = std::clock();
 
-	//greedy_heuristic(M);
-	aproximative_independent_set(M);
+	//greedy_heuristic_aleatorized(M, S);
+	//two_improvement(M, S);
+	grasp(M);
+	//aproximative_independent_set(M);
 
 
 	duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;

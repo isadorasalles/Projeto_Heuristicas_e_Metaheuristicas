@@ -20,9 +20,7 @@ void two_improvement(vector <vector <int> > G, vector <int> &Set){
 		improvement = 0;
 
 		int max = max_degree(G, visited, Set);
-		cout << max << "\n";
 		vector <int> nodes = find_neighbors(G, max, Set);
-		cout << nodes.size() << "\n";
 
 		if (nodes.size() == 2){
 			Set.erase(Set.begin()+max);
@@ -34,13 +32,13 @@ void two_improvement(vector <vector <int> > G, vector <int> &Set){
 		
 	} while (improvement == 1);
 
-
+	/*
 	cout << "Vertices que formam o conjunto: ";
 	for (int i = 0; i < Set.size(); i++)
 		cout << Set[i] << " ";
 	cout << "\n";
 	cout << "Tamanho do Conjunto: " << Set.size() << "\n";
-
+	*/
 	
 }
 
