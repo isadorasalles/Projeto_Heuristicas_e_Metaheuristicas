@@ -7,7 +7,8 @@
 
 using namespace std;
 
-void grasp(vector <vector <int> > G);
+//void grasp(vector <vector <int> > G);
+void iterated_local_search(vector <vector <int> > G);
 //void greedy_heuristic(vector <vector <int > > G);
 //void aproximative_independent_set(vector <vector <int> > G);
 
@@ -51,9 +52,9 @@ int main(int argc, char *argv[]){
 
 	//greedy_heuristic_aleatorized(M, S);
 	//two_improvement(M, S);
-	grasp(M);
+	//grasp(M);
 	//aproximative_independent_set(M);
-
+    iterated_local_search(M);
 
 	duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
 

@@ -7,7 +7,7 @@ int min_degree(vector <vector <int > > G, vector <int> visited);
 void remove_v_and_neighbors(vector <vector <int> > &G, int del, vector <int> &visited);
 
 
-void greedy_heuristic(vector <vector <int > > G){
+vector <int> greedy_heuristic(vector <vector <int > > G){
 	vector <int> S;
 	int sum = 0;
 	vector <int> visited;
@@ -24,11 +24,12 @@ void greedy_heuristic(vector <vector <int > > G){
 			break;
 		sum = 0;
 	}
-	cout << "Vertices que formam o conjunto: ";
-	for (int i = 0; i < S.size(); i++)
-		cout << S[i] << " ";
-	cout << "\n";
-	cout << "Tamnho do Conjunto: " << S.size() << "\n";
+	//cout << "Vertices que formam o conjunto: ";
+	//for (int i = 0; i < S.size(); i++)
+	//	cout << S[i] << " ";
+	//cout << "\n";
+	//cout << "Tamnho do Conjunto: " << S.size() << "\n";
+	return S;
 	
 }
 
