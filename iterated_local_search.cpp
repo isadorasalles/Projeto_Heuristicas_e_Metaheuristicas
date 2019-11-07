@@ -27,30 +27,30 @@ void iterated_local_search(vector <vector <int> > G){
 	int bestCandidate = S.size();
 	int candidate;
 	std::clock_t start;
-    double duration = 0;
-    int i = 0;
+	double duration = 0;
 
-    start = std::clock();
+	start = std::clock();
 
-    srand (time(NULL));
+	srand (time(NULL));
 
-    int iterations = 0;
+	int iterations = 0;
 
-    vector <int> S_;
-    while((duration < 120)&&(iterations < 200)){
+	vector <int> S_;
+
+	while((duration < 120)&&(iterations < 200)){
 		S_ = pertubation(G, S);
 		cout << "\nPerturbacao: " << S_.size() << "\n\n";
 		two_improvement(G, S_);
 		candidate = S_.size();
-  		cout << "\nSolucao Candidata: " << candidate << "\n\n";
-  		if (candidate >= S.size())
-  			S = S_;
-  		if (candidate > bestCandidate){
-  			sBest = S_;
-  			bestCandidate = candidate;
-  		}
-  		duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-  		iterations++;
+		cout << "\nSolucao Candidata: " << candidate << "\n\n";
+		if (candidate >= S.size())
+			S = S_;
+		if (candidate > bestCandidate){
+			sBest = S_;
+			bestCandidate = candidate;
+		}
+		duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+		iterations++;
   	}
 
 
@@ -62,8 +62,6 @@ void iterated_local_search(vector <vector <int> > G){
 
 
 }
-
-// tecnicas para diversificacao?
 
 vector <int> pertubation(vector <vector <int> > G, vector <int> S){
 	int k = 0;
@@ -97,7 +95,6 @@ vector <int> pertubation(vector <vector <int> > G, vector <int> S){
 					for (int j = 0; j < index.size(); j++)
 						S.erase(S.begin() + index[j]);
 					
-				
 			}
 
 		}
