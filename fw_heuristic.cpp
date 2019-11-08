@@ -15,7 +15,7 @@ void init_matrix(int nnodes){
       else{
         dist[i][j] = INF;
       }
-       G[i][j] = 0;
+       G[i][j] = 1;
     }
   }
 }
@@ -122,10 +122,10 @@ int main(int argc, char const *argv[]) {
   while(getline(infile, line)){
     istringstream iss(line);
     iss >> e >> src >> dst;
-    G[src-1][dst-1] = 1;
-    G[dst-1][src-1] = 1;
-    dist[src-1][dst-1] = 1;
-    dist[dst-1][src-1] = 1;
+    G[src-1][dst-1] = 0;
+    G[dst-1][src-1] = 0;
+    dist[src-1][dst-1] = 0;
+    dist[dst-1][src-1] = 0;
 
   }
   floyd_warshall(nodes);
