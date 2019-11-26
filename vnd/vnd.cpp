@@ -16,6 +16,8 @@ void three_improvement(vector <vector <int> > G, vector <int> &Set);
 
 void vnd(vector <vector <int> > G){
 	vector <int> S = greedy_heuristic(G);
+	// vector <int> S;
+	// S.push_back(0);
 	vector <int> aux, best_solution;
 	int size, best_size = (int)S.size();
 
