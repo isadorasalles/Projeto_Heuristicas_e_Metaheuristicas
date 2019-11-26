@@ -9,8 +9,6 @@ using namespace std;
 
 void grasp(vector <vector <int> > G);
 
-void aproximative_independent_set(vector <vector <int> > G);
-
 int main(int argc, char *argv[]){
 	
 	ifstream file;
