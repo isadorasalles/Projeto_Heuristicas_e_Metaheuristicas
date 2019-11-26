@@ -10,13 +10,13 @@ build: main.o greedy_heuristic.o local_search.o iterated_local_search.o
 main.o:
 	$(CC) $(CFLAGS) -c main.cpp -o main.o
 
-candidato.o:
+greedy_heuristic.o:
 	$(CC) $(CFLAGS) -c greedy_heuristic.cpp -o greedy_heuristic.o
 
-tarefa1.o:
+local_search.o:
 	$(CC) $(CFLAGS) -c local_search.cpp -o local_search.o
 
-tarefa2.o:
+iterated_local_search.o:
 	$(CC) $(CFLAGS) -c iterated_local_search.cpp -o iterated_local_search.o
 
 clean:
