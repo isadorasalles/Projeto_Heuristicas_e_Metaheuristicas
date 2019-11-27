@@ -14,7 +14,7 @@
 ### Literatura
 1. Iterated local search usando busca local (j, k)-swap **  (Isadora)
 1. [ILS-VND](https://link.springer.com/content/pdf/10.1007%2Fs11590-017-1128-7.pdf)
-1. [Tabu Search para max-clique](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.57.4711&rep=rep1&type=pdf)
+1. [MNTS](http://www.springerlink.com/content/5j3ww5t5n4q77w66/)
 
 ### Outras
 1. GRASP: solução inicial gulosa aleatorizada + busca local  (Isadora)
