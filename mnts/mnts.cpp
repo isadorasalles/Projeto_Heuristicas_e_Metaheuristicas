@@ -739,7 +739,6 @@ void Output()
     outfilename[len+3]='t';
     outfilename[len+4]='\0';
 
-    fp = fopen(outfilename, "a+");
     // for( i = 0; i < 100; i++ )
     // {
     //     fprintf(fp, "len = %5d\n", len_used[ i ] );
@@ -772,9 +771,8 @@ void Output()
 
     iteravg =  int ( (double (iteravg)) / count );
     timeavg = timeavg / (count*1000);
-    cout << lenbb << endl;
+    cout << lenbb;
     // fprintf(fp, "size:%5d\n", lenbb );
-    fclose(fp) ;
     return ;
 }
 
@@ -823,6 +821,12 @@ int main(int argc, char **argv)
            //cout << "The search depth value is " << len_improve << endl;
            exit(0);
        }
+
+       std::clock_t start;
+       double duration;
+
+       start = std::clock();
+
        srand( (unsigned) time( NULL ) );
        Initializing();
        tm1 = Max_Vtx*sizeof( int );
@@ -841,6 +845,11 @@ int main(int argc, char **argv)
       }
 
       Output();
+
+      duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+
+      std::cout << "; "<< duration <<'\n';
+
       // cout << "finished" << endl;
       // getchar();
       return 0;
