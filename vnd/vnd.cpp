@@ -24,5 +24,5 @@ void vnd(vector <vector <int> > G){
 	two_improvement(G, S);
 	three_improvement(G, S);
 
-	std::cout << S.size() << std::endl; 
+	std::cout << S.size(); 
 }
