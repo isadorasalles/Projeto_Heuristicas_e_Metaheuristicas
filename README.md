@@ -2,22 +2,22 @@
 
 ## Heurísticas Construtivas
 ### Literatura
-1. Greedy (Isadora)
-1. Ramsey (Breno)
-1. Clique Removal (Rennan)
+1. Greedy
+1. Ramsey
+1. Clique Removal 
 ### Outras
-1. Heurística para vertex cover, o que nao faz parte da cobertura é parte do conjunto independente (Isadora)
-1. Baseada no emparelhamento estável (Rennan)
-1. Solução exata com um critério de parada x (Breno)
+1. Heurística baseada no vertex cover
+1. Heurística maximal
+1. Heurística utilizando Floyd–Warshall
 
 ## Metaheurísticas
 ### Literatura
-1. Iterated local search usando busca local (j, k)-swap **  (Isadora)
+1. [Iterated local search usando busca local (j, k)-swap](http://www.resende.info/mauricio/doc/ls-indepset.pdf)
 1. [ILS-VND](https://link.springer.com/content/pdf/10.1007%2Fs11590-017-1128-7.pdf)
 1. [MNTS](http://www.info.univ-angers.fr/pub/hao/clique.html)
 
 ### Outras
-1. GRASP: solução inicial gulosa aleatorizada + busca local  (Isadora)
+1. GRASP
 1. Tabu Search
 1. VND
 
