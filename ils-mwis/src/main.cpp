@@ -89,10 +89,12 @@ Graph *readInstance (const string &filename, bool complement)
 	}
 
 	input.close();
-
+/*
 	if (m_count != m) {
+		cout << m_count << " " << m << "\n";
 		throw InitError("the number of edges announced is not equal to the number of edges read.\n");
 	}
+*/
 
 	return graph;
 } // Graph *readInstance (const string &filename)

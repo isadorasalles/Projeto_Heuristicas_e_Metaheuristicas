@@ -51,6 +51,6 @@ int main(int argc, char *argv[]){
 
 	duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
 
-    std::cout << "TEMPO: "<< duration <<'\n';
+    std::cout << "; "<< duration <<'\n';
 
 }

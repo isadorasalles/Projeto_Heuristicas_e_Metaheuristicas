@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int min_degree(vector<vector<int>> G, vector<int> visited){
+int min_degree(vector<vector<int> > G, vector<int> visited){
 	for(int i = 0; i < G.size(); i++){
 		if (visited[i] == 0){
 			return i;
@@ -44,7 +44,7 @@ vector<int> max_vector(vector<int> a, vector<int> b){
 	return b;
 }
 
-pair<vector<int>,vector<int>> ramsey(std::vector<std::vector<int>> G, vector <int> visited){
+pair<vector<int>,vector<int> > ramsey(std::vector<std::vector<int> > G, vector <int> visited){
 	int sum = 0;
 	vector <int> C, I;
 
@@ -54,16 +54,16 @@ pair<vector<int>,vector<int>> ramsey(std::vector<std::vector<int>> G, vector <in
     int vertex;
 	for (vertex = 0; vertex < visited.size(); vertex++) if(!visited[vertex]) break;
 
-    pair<vector<int>,vector<int>> output = ramsey(G, comp_remove_v_and_neighbors(G, vertex, visited));
-	pair<vector<int>,vector<int>> comp_output = ramsey(G, remove_v_and_neighbors2(G, vertex, visited));
+    pair<vector<int>,vector<int> > output = ramsey(G, comp_remove_v_and_neighbors(G, vertex, visited));
+	pair<vector<int>,vector<int> > comp_output = ramsey(G, remove_v_and_neighbors2(G, vertex, visited));
 	output.first.push_back(vertex);
 	comp_output.second.push_back(vertex);
 	return make_pair(max_vector(output.first, comp_output.first), max_vector(output.second, comp_output.second));
 }
 
-int clique_removal_heuristic(std::vector<std::vector<int>> G){
+int clique_removal_heuristic(std::vector<std::vector<int> > G){
 	std::vector<int> visited((int)G.size(), 0);
-	pair<vector<int>,vector<int>> output = ramsey(G, visited);
+	pair<vector<int>,vector<int> > output = ramsey(G, visited);
     vector<int> max_set;
 	
 	while(true){
@@ -80,28 +80,34 @@ int clique_removal_heuristic(std::vector<std::vector<int>> G){
 		break;
 	}
 
+	/*
 	std::cout << "Vertices que formam o conjunto: ";
 	for (int i = 0; i < max_set.size(); i++)
 		std::cout << max_set[i] << " ";
 	std::cout << "\n";
-	std::cout << "Tamnho do Conjunto: " << max_set.size() << "\n";
+	*/
+	std::cout << max_set.size();
+
 	return 0;
 }
 
-int ramsey_heuristic(std::vector<std::vector<int>> G){
+int ramsey_heuristic(std::vector<std::vector<int> > G){
 	std::vector<int> visited((int)G.size(), 0);
-	pair<vector<int>,vector<int>> output = ramsey(G, visited);
+	pair<vector<int>,vector<int> > output = ramsey(G, visited);
     vector<int> max_set =  output.second; 
 
+    /*
 	std::cout << "Vertices que formam o conjunto: ";
 	for (int i = 0; i < max_set.size(); i++)
 		std::cout << max_set[i] << " ";
 	std::cout << "\n";
-	std::cout << "Tamnho do Conjunto: " << max_set.size() << "\n";
+	*/
+	std::cout << max_set.size();
+	
 	return 0;
 }
 
-int maximal_heuristic(std::vector<std::vector<int>> G){
+int maximal_heuristic(std::vector<std::vector<int> > G){
 	int sum = 0;
 	std::vector <int> S;
 	std::vector<int> visited((int)G.size(), 0);
@@ -116,11 +122,13 @@ int maximal_heuristic(std::vector<std::vector<int>> G){
 			break;
 		sum = 0;
 	}
+	/*
 	std::cout << "Vertices que formam o conjunto: ";
 	for (int i = 0; i < S.size(); i++)
 		std::cout << S[i] << " ";
 	std::cout << "\n";
 	std::cout << "Tamnho do Conjunto: " << S.size() << "\n";
+	*/
 	return 0;
 }
 
@@ -131,7 +139,7 @@ int main(int argc, char *argv[]){
 	int v1, v2;
 	std::string str;
 	int nodes, edges;
-	std::vector<std::vector<int>> M;
+	std::vector<std::vector<int> > M;
 	
 	if (file.is_open()){
 		file >> nodes;
@@ -156,10 +164,10 @@ int main(int argc, char *argv[]){
 	}
 
     std::clock_t start = std::clock();
-	ramsey_heuristic(M);
+	//ramsey_heuristic(M);
 	clique_removal_heuristic(M);
 	double duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-    std::cout << "TEMPO: "<< duration <<'\n';
+    std::cout << "; "<< duration <<'\n';
 
 }

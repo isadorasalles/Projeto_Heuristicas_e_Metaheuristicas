@@ -2,6 +2,6 @@
 
 for file in test_data/*
 do
-	./ilsvnd $file 
+	./ilsvnd $file -W
 	
 done

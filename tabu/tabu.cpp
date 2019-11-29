@@ -10,9 +10,8 @@
 using namespace std;
 
 vector <int> greedy_heuristic(vector <vector <int > > G);
-void two_improvement(vector <vector <int> > G, vector <int> &Set);
-void three_improvement(vector <vector <int> > G, vector <int> &Set);
-vector <int> pertubation(vector <vector <int> > G, vector <int> S);
+void n_improvement(vector <vector <int> > G, vector <int> &Set);
+void _2k_swap(vector <vector <int> > G, vector <int> &Set);
 
 
 void tabu(vector <vector <int> > G){
@@ -23,11 +22,11 @@ void tabu(vector <vector <int> > G){
 
 	for (int i = 0; i < TABU; ++i){
 		aux  = S;
-		two_improvement(G, S);
+		n_improvement(G, S);
 		if (best_size < (int)S.size()){
 			best_size = (int)S.size();
 		}
-		three_improvement(G, S);
+		_2k_swap(G, S);
 		if (best_size < (int)S.size()){
 			best_size = (int)S.size();
 		}
@@ -51,46 +50,5 @@ void tabu(vector <vector <int> > G){
 		}
 	}
 
-	std::cout << best_size << std::endl; 
-}
-
-vector <int> pertubation(vector <vector <int> > G, vector <int> S){
-	int k = 0;
-	vector <int>::iterator it, it2;
-
-	for (int i = 0; i < G.size(); i++){
-		vector <int> index;
-
-		int rand_i = rand() % G.size();
-		it = find (S.begin(), S.end(), rand_i);
-
-		if (it != S.end()){
-			rand_i = i; 
-			it = find (S.begin(), S.end(), rand_i);
-		}
-
-		if (it == S.end()){
-			for (int j = 0; j < S.size(); j++){
-				if (G[rand_i][S[j]] == 1){
-					it2 = find (index.begin(), index.end(), j);
-					if (it2 == index.end())
-						index.push_back(j);
-				}
-			}
-			if ((index.size() <= 2)&&(index.size() > 0)){
-					k++;
-					S.push_back(rand_i);
-
-					sort(index.begin(), index.end(), greater<int>()); 
-
-					for (int j = 0; j < index.size(); j++)
-						S.erase(S.begin() + index[j]);
-					
-			}
-
-		}
-		if (k == 4)
-			break;
-	}
-	return S;
+	std::cout << best_size; 
 }
